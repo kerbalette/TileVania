@@ -19,12 +19,17 @@ public class Player : MonoBehaviour
     // Cached component references
     Rigidbody2D myRigidBody;
     Animator myAnimator;
+    CapsuleCollider2D capsuleCollider;
+    LayerMask groundMask;
 
     // Messages then messages
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+
+        groundMask = LayerMask.GetMask("Ground");
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -78,6 +83,8 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
+        if (!capsuleCollider.IsTouchingLayers(groundMask)){ return;  }
+
         if (Input.GetButtonDown("Jump"))
         {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
