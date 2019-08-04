@@ -8,13 +8,22 @@ public class Player : MonoBehaviour
     public float speed;
     float xPos;
     */
-    [SerializeField] float runSpeed = 5f;
-    Rigidbody2D myRigidBody;
 
-    // Start is called before the first frame update
+    // Config
+    [SerializeField] float runSpeed = 5f;
+
+    // State
+    bool isAlive = true;
+
+    // Cached component references
+    Rigidbody2D myRigidBody;
+    Animator myAnimator;
+
+    // Messages then messages
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,6 +43,21 @@ public class Player : MonoBehaviour
         float controlThow = Input.GetAxis("Horizontal") * runSpeed; // value is between -1 and +1
         Vector2 playerVelocity = new Vector2(controlThow, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
+
+        /* my way to change the idle animation
+        if (playerVelocity.x == 0f)
+        {
+            myAnimator.SetBool("Running", false);
+        }
+        else
+        {
+            myAnimator.SetBool("Running", true);
+        }
+        */
+        // Better way!
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
+        
     }
 
     private void FlipSprite()
