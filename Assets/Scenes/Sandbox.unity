@@ -2136,6 +2136,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &409909615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9157872574442776827, guid: c3f0c1b26fc947a47b73adb3e9f7d8ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 9157872575969350150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &409909616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409909615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e75c738d94e584a9055fe6d6a8697c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,12 +3496,12 @@ PrefabInstance:
     - target: {fileID: 9157872574442776825, guid: c3f0c1b26fc947a47b73adb3e9f7d8ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.54
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 9157872574442776825, guid: c3f0c1b26fc947a47b73adb3e9f7d8ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 4.46
       objectReference: {fileID: 0}
     - target: {fileID: 9157872574442776825, guid: c3f0c1b26fc947a47b73adb3e9f7d8ab,
         type: 3}
