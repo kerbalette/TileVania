@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     // Config
     [SerializeField] float runSpeed = 5f;
+    [SerializeField] float jumpSpeed = 5f;
 
     // State
     bool isAlive = true;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         */
 
         Run();
+        Jump();
         FlipSprite();
     }
 
@@ -71,6 +73,15 @@ public class Player : MonoBehaviour
             */
 
             transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
+        }
+    }
+
+    private void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
+            myRigidBody.velocity += jumpVelocityToAdd;
         }
     }
 }
