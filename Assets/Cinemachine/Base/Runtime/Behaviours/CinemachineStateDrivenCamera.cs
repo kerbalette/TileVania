@@ -347,9 +347,22 @@ namespace Cinemachine
                 return null;
             }
             CinemachineVirtualCameraBase defaultCam = m_ChildCameras[0];
+            /* Old method
             if (m_AnimatedTarget == null || !m_AnimatedTarget.gameObject.activeSelf 
                 || m_AnimatedTarget.runtimeAnimatorController == null
                 || m_LayerIndex < 0 || m_LayerIndex >= m_AnimatedTarget.layerCount)
+            {
+                mActivationTime = 0;
+                //UnityEngine.Profiling.Profiler.EndSample();
+                return defaultCam;
+            }
+            */
+
+            // Fix from https://forum.unity.com/threads/cinemachine-state-machine-animator-is-not-playing-an-animatorcontroller-warnings.508523/
+            if (m_AnimatedTarget == null || !m_AnimatedTarget.gameObject.activeSelf
+                || m_AnimatedTarget.runtimeAnimatorController == null
+                || m_LayerIndex < 0 || !m_AnimatedTarget.hasBoundPlayables
+                || m_LayerIndex >= m_AnimatedTarget.layerCount)
             {
                 mActivationTime = 0;
                 //UnityEngine.Profiling.Profiler.EndSample();
