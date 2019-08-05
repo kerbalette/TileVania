@@ -134,10 +134,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy"){
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Hazards"){
             isAlive = false;
             myAnimator.SetTrigger("Dead");
-            myRigidBody.velocity = new Vector2(collision.rigidbody.velocity.x * 5f, 10f);
+            if (collision.rigidbody != null)
+            {
+                myRigidBody.velocity = new Vector2(collision.rigidbody.velocity.x * 5f, 10f);
+            }
         }
     }
 }
