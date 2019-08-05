@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         xPos = Input.GetAxis("Horizontal") * speed;
         this.transform.Translate(xPos * Time.deltaTime, 0, 0);
         */
-
+        if (!isAlive) { return; }
         Run();
         Jump();
         ClimbLadder();
@@ -129,6 +129,15 @@ public class Player : MonoBehaviour
         {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Enemy"){
+            isAlive = false;
+            myAnimator.SetTrigger("Dead");
+            myRigidBody.velocity = new Vector2(collision.rigidbody.velocity.x * 5f, 10f);
         }
     }
 }
