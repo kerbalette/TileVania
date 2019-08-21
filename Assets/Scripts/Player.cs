@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Hazards")
+        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Hazards" || collision.gameObject.name == "Water")
         { 
             myAnimator.SetTrigger("Dead");
             if (collision.rigidbody != null)

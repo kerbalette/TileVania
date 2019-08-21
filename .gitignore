@@ -8,6 +8,9 @@ Assets/AssetStoreTools*
 # Remove OS X file types
 .DS_Store
 
+# JetBrains Rider
+.idea/
+
 # Visual Studio cache directory
 .vs/
 

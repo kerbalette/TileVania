@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int playerLives = 3;
-    [SerializeField] int playerScore = 0;
+    [SerializeField] private int playerLives = 3;
+    [SerializeField] private int playerScore = 0;
 
-    [SerializeField] Text livesText;
-    [SerializeField] Text scoreText;
+    [SerializeField] private Text livesText;
+    [SerializeField] private Text scoreText;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class GameSession : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         livesText.text = playerLives.ToString();
         scoreText.text = playerScore.ToString();
@@ -62,11 +62,5 @@ public class GameSession : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
